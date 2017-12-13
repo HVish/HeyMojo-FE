@@ -10,7 +10,10 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ApiService } from './api.service';
 import { ProfileComponent } from './profile/profile.component';
+import { SessionService } from './session.service';
+import { DataService } from './data.service';
 
+const LocalStorage = { provide: 'LOCALSTORAGE', useFactory: getLocalStorage };
 
 @NgModule({
   declarations: [
@@ -26,7 +29,16 @@ import { ProfileComponent } from './profile/profile.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ApiService],
+  providers: [
+    ApiService,
+    SessionService,
+    DataService,
+    LocalStorage
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function getLocalStorage() {
+  return (typeof window !== "undefined") ? window.localStorage : null;
+}
