@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-sm-8">
+            <form>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input [(ngModel)]="user.name.first" type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input [(ngModel)]="user.name.last" type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input [(ngModel)]="user.dob" type="date" class="form-control" id="dob" name="dob" placeholder="Birthday">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input [(ngModel)]="user.username" type="text" class="form-control" id="username" name="username" aria-describedby="usernameHelp" placeholder="Username">
+                    <small id="usernameHelp" class="form-text text-muted">Username should be unique. It will be used at the time of login.</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input [(ngModel)]="user.password" type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input [(ngModel)]="user.confirmPassword" type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Re-enter Password">
+                </div>
+                <div class="form-group">
+                    <label for="profilePic">Profile Picture</label>
+                    <br>
+                    <label class="custom-file">
+                        <span class="custom-file-control"></span>
+                        <input [(ngModel)]="user.profilePic" type="file" id="profilePic" name="profilePic" class="custom-file-input">
+                    </label>
+                </div>
+                <button (click)="signup()" type="submit" class="btn btn-primary">Signup</button>
+            </form>
+        </div>
+    </div>
+</div>

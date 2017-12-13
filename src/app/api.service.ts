@@ -15,4 +15,8 @@ export class ApiService {
         return this.http.post<User>(`${this.baseUrl}/auth`, body);
     }
 
+    signup(data: any): Observable<User> {
+        return this.http.post<User>(`${this.baseUrl}/users`, data);
+    }
+
 }
