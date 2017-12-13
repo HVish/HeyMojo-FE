@@ -3,7 +3,7 @@
     <div class="mx-auto">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form role="form" action="#" method="POST">
+          <form role="form">
             <fieldset>
               <div class="row">
                 <div class="mx-auto">
@@ -13,13 +13,13 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="form-group">
-                    <input class="form-control" placeholder="Username" name="username" type="text" autofocus>
+                    <input [(ngModel)]="username" class="form-control" placeholder="Username" name="username" type="text" autofocus>
                   </div>
                   <div class="form-group">
-                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                    <input [(ngModel)]="password" class="form-control" placeholder="Password" name="password" type="password" value="">
                   </div>
                   <div class="form-group">
-                    <input type="submit" class="btn btn-lg btn-primary btn-block" id="loginSubmit" value="Sign in">
+                    <input (click)="login()" type="submit" class="btn btn-lg btn-primary btn-block" id="loginSubmit" value="Sign in">
                   </div>
                 </div>
               </div>
