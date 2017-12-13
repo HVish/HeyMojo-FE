@@ -34,4 +34,9 @@ export class SessionService {
         return defaultVal;
     }
 
+    removeItem(name: string): void {
+        delete this.data[name];
+        window.localStorage.removeItem(name);
+    }
+
 }

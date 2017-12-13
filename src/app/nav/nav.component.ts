@@ -29,6 +29,7 @@ export class NavComponent implements OnInit {
     logout(): void {
         this.authenticated = false;
         this.sessionService.setItem('authenticated', false);
+        this.sessionService.removeItem('user');
         // notify to other listener about logout
         this.dataService.sendData({ authenticated: false });
         this.router.navigate(['/login']);
