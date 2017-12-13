@@ -13,6 +13,9 @@
       <li *ngIf="!authenticated" class="nav-item">
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
+      <li *ngIf="!authenticated" class="nav-item">
+        <a class="nav-link" href="javascript:void(0)" (click)="fbLogin()"><i class="fab fa-facebook-f"></i> Login with FaceBook</a>
+      </li>
       <li *ngIf="authenticated" class="nav-item">
         <a class="nav-link" href="javascript:void(0)" (click)="logout()">Logout</a>
       </li>

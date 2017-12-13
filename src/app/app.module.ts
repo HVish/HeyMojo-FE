@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FacebookModule } from 'ngx-facebook';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -12,6 +13,7 @@ import { ApiService } from './api.service';
 import { ProfileComponent } from './profile/profile.component';
 import { SessionService } from './session.service';
 import { DataService } from './data.service';
+import { FbService } from './fb.service';
 
 const LocalStorage = { provide: 'LOCALSTORAGE', useFactory: getLocalStorage };
 
@@ -27,13 +29,15 @@ const LocalStorage = { provide: 'LOCALSTORAGE', useFactory: getLocalStorage };
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FacebookModule.forRoot()
   ],
   providers: [
     ApiService,
     SessionService,
     DataService,
-    LocalStorage
+    LocalStorage,
+    FbService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <div class="row justify-content-md-center">
     <div class="col-lg-3 profile-img">
-      <img class="img-fluid" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image">
+      <img class="img-fluid" src="{{profilePic}}" alt="Profile Image">
     </div>
-    <div class="col-lg-9">
+    <div *ngIf="user&&!fbLogin" class="non-fb col-lg-9">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <span class="align-middle tags">Name: </span>
@@ -31,6 +31,44 @@
           <span class="align-middle tags">Work:</span>
           <span class="align-middle tags-data">
             <div *ngFor="let org of user.work">{{formatOrg(org)}} </div>
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="fbLogin&&fbData" class="non-fb col-lg-9">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <span class="align-middle tags">Name: </span>
+          <span class="align-middle tags-data">{{fbData.name}}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Gender:</span>
+          <span class="align-middle tags-data">{{fbData.gender}}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Data of Birth: </span>
+          <span class="align-middle tags-data">{{fbData.birthday}}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">About: </span>
+          <span class="align-middle tags-data">{{fbData.about}}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Likes:</span>
+          <span class="align-middle tags-data">
+            <div *ngFor="let org of fbData.likes.data">{{org.name}} </div>
+          </span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Education:</span>
+          <span class="align-middle tags-data">
+            <div *ngFor="let org of fbData.education">{{org.school.name}} - {{org.year.name}} </div>
+          </span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Work:</span>
+          <span class="align-middle tags-data">
+            <div *ngFor="let org of fbData.work">{{org.employer.name}} - {{org.position.name}} </div>
           </span>
         </li>
       </ul>
