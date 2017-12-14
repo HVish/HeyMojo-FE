@@ -15,6 +15,24 @@ export class ApiService {
         return this.http.post<User>(`${this.baseUrl}/auth`, body);
     }
 
+    uploadUrl(file: any): Observable<any> {
+        return this.http.get<any>(`${this.baseUrl}/s3/upload-url`, {
+            params: {
+                name: file.name,
+                size: file.size,
+                type: file.type
+            }
+        });
+    }
+
+    uploadFile(url: string, file: any): Observable<any> {
+        return this.http.put<any>(url, file, {
+            headers: {
+                'Content-Type': file.type
+            }
+        });
+    }
+
     signup(data: any): Observable<User> {
         return this.http.post<User>(`${this.baseUrl}/users`, data);
     }

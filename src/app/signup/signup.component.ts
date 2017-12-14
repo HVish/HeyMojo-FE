@@ -9,17 +9,13 @@ import { ApiService } from '../api.service';
 })
 export class SignupComponent implements OnInit {
 
-    user: any = {
-        name: {
-            first: '',
-            last: ''
-        },
-        dob: '',
-        username: '',
-        password: '',
-        confirmPassword: '',
-        profilePic: ''
-    };
+    firstName: string;
+    lastName: string;
+    dob: string;
+    password: string;
+    confirmPassword: string;
+    username: string;
+    profilePic: any;
 
     constructor(
         private apiService: ApiService,
@@ -28,10 +24,34 @@ export class SignupComponent implements OnInit {
     ngOnInit() {
     }
 
-    signup(): void {
-        this.apiService.signup(this.user).toPromise().then(user => {
-            this.router.navigate(['/login']);
-        }).catch(console.log);
+    fileSelected(e): void {
+        this.profilePic = e.target.files[0];
+    }
+
+    submit(): void {
+        if (this.password != this.confirmPassword) {
+            console.log('password mismatch');
+        } else {
+            let filename;
+            const data = {
+                firstName: this.firstName,
+                lastName: this.lastName,
+                dob: this.dob,
+                password: this.password,
+                username: this.username,
+                profilePic: this.profilePic
+            };
+            this.apiService.uploadUrl(this.profilePic).toPromise().then(response => {
+                data.profilePic = response.name;
+                return this.apiService.uploadFile(response.url, this.profilePic).toPromise();
+            }).then(response => {
+                return this.apiService.signup(data).toPromise();
+            }).then(response => {
+                this.router.navigate(['/login']);
+            }).catch(err => {
+                console.log(err);
+            });
+        }
     }
 
 }
