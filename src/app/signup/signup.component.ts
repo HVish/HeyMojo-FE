@@ -50,6 +50,7 @@ export class SignupComponent implements OnInit {
             }).then(response => {
                 return this.apiService.signup(data).toPromise();
             }).then(response => {
+                this.dataService.sendData({ loading: false });
                 this.router.navigate(['/login']);
             }).catch(err => {
                 console.log(err);

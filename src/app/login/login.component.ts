@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
             this.sessionService.setItem('user', user);
             // notify to other listener about authentication
             this.dataService.sendData({ authenticated: true });
+            this.dataService.sendData({ loading: false });
             this.router.navigate(['/profile']);
         }).catch(err => {
             console.log(err);
