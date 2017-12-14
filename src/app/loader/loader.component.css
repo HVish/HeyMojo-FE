@@ -1,0 +1,18 @@
+.loader-container {
+    display: none;
+    z-index: 1011;
+    position: fixed;
+    padding: 15px 20px;
+    margin: 0px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    border: 1px solid #ccc;
+    cursor: wait;
+    left: calc(50% - 63px);
+    top: calc(50% - 26px);
+    background: #eee;
+}
+
+.loader-container.active {
+    display: block;
+}

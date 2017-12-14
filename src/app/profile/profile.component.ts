@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../session.service';
+import { DataService } from "../data.service";
 import { FbService } from '../fb.service';
 import { ApiMethod } from 'ngx-facebook/dist/esm/providers/facebook';
 
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit {
 
     constructor(
         private sessionService: SessionService,
+        private dataService: DataService,
         private fbService: FbService,
         private router: Router) { }
 
@@ -30,11 +32,16 @@ export class ProfileComponent implements OnInit {
             this.user = this.sessionService.getItem('user', {});
             this.fbLogin = this.sessionService.getItem('fbLogin', false);
             if (this.fbLogin) {
+                this.dataService.sendData({ loading: true });
                 this.getFbProfile().then(response => {
-                    console.log('FB logged in', response);
+                    console.log('FB logged in');
                     this.fbData = response;
                     this.profilePic = response.picture.data.url;
-                }).catch(console.log);
+                    this.dataService.sendData({ loading: false });
+                }).catch(err =>{
+                    this.dataService.sendData({ loading: false });
+                    console.log(err);
+                });
             }
         }
     }

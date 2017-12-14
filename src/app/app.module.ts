@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SessionService } from './session.service';
 import { DataService } from './data.service';
 import { FbService } from './fb.service';
+import { LoaderComponent } from './loader/loader.component';
 
 const LocalStorage = { provide: 'LOCALSTORAGE', useFactory: getLocalStorage };
 
@@ -23,7 +24,8 @@ const LocalStorage = { provide: 'LOCALSTORAGE', useFactory: getLocalStorage };
     NavComponent,
     SignupComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     }
 
     login(): void {
+        this.dataService.sendData({ loading: true });
         this.apiService.auth(this.username, this.password).toPromise().then(user => {
             this.sessionService.setItem('authenticated', true);
             this.sessionService.setItem('user', user);
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/profile']);
         }).catch(err => {
             console.log(err);
+            this.dataService.sendData({ loading: false });
             if (err.error) {
                 this.errMsg = err.error.message;
                 this.hasError = true;

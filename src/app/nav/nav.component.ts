@@ -29,6 +29,7 @@ export class NavComponent implements OnInit {
     }
 
     fbLogin() {
+        this.dataService.sendData({ loading: true });
         this.fbService.login({
             scope: this.fbService.permissions.join()
         }).then(response => {
@@ -44,6 +45,7 @@ export class NavComponent implements OnInit {
             this.router.navigate(['/profile']);
         }).catch(err => {
             console.log(err);
+            this.dataService.sendData({ loading: false });
         });
     }
 

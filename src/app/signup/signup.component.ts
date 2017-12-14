@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from "../data.service";
 import { ApiService } from '../api.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class SignupComponent implements OnInit {
     profilePic: any;
 
     constructor(
+        private dataService: DataService,
         private apiService: ApiService,
         private router: Router) { }
 
@@ -30,7 +32,7 @@ export class SignupComponent implements OnInit {
 
     submit(): void {
         if (this.password != this.confirmPassword) {
-            console.log('password mismatch');
+            alert('password mismatch');
         } else {
             let filename;
             const data = {
@@ -41,6 +43,7 @@ export class SignupComponent implements OnInit {
                 username: this.username,
                 profilePic: this.profilePic
             };
+            this.dataService.sendData({ loading: true });
             this.apiService.uploadUrl(this.profilePic).toPromise().then(response => {
                 data.profilePic = response.name;
                 return this.apiService.uploadFile(response.url, this.profilePic).toPromise();
@@ -50,6 +53,7 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['/login']);
             }).catch(err => {
                 console.log(err);
+                this.dataService.sendData({ loading: false });
             });
         }
     }
