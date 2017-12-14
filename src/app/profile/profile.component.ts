@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../session.service';
+import { ApiService } from '../api.service';
 import { DataService } from "../data.service";
 import { FbService } from '../fb.service';
 import { ApiMethod } from 'ngx-facebook/dist/esm/providers/facebook';
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit {
     profilePic:string;
 
     constructor(
+        private apiService: ApiService,
         private sessionService: SessionService,
         private dataService: DataService,
         private fbService: FbService,
@@ -27,7 +29,7 @@ export class ProfileComponent implements OnInit {
 
     ngOnInit() {
         if (!this.sessionService.getItem('authenticated', false)) {
-            this.router.navigate(['/profile']);
+            this.router.navigate(['/login']);
         } else {
             this.user = this.sessionService.getItem('user', {});
             this.fbLogin = this.sessionService.getItem('fbLogin', false);
@@ -39,6 +41,15 @@ export class ProfileComponent implements OnInit {
                     this.profilePic = response.picture.data.url;
                     this.dataService.sendData({ loading: false });
                 }).catch(err =>{
+                    this.dataService.sendData({ loading: false });
+                    console.log(err);
+                });
+            } else {
+                this.dataService.sendData({ loading: true });
+                this.apiService.getImageUrl(this.user.profilePic).toPromise().then(response => {
+                    this.dataService.sendData({ loading: false });
+                    this.profilePic = response['url'];
+                }).catch(err => {
                     this.dataService.sendData({ loading: false });
                     console.log(err);
                 });
@@ -59,15 +70,6 @@ export class ProfileComponent implements OnInit {
         const start = this.formatDate(org.start);
         const end = org.end ? this.formatDate(org.end) : 'present';
         return `${org.name} [ ${start} - ${end} ]`;
-    }
-
-    getAccountPermissions(): Promise<any> {
-        const method: ApiMethod = 'get';
-        const access_token: string = this.sessionService.getItem('accessToken', '');
-        return this.fbService.api('/me/accounts', method, {
-            fields: this.fbService.fields.join(),
-            access_token: access_token
-        });
     }
 
     getFbProfile(): Promise<any> {

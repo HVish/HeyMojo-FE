@@ -33,6 +33,12 @@ export class ApiService {
         });
     }
 
+    getImageUrl(fileName: string): Observable<string> {
+        return this.http.get<string>(`${this.baseUrl}/s3/image-url`, {
+            params: { name: fileName }
+        });
+    }
+
     signup(data: any): Observable<User> {
         return this.http.post<User>(`${this.baseUrl}/users`, data);
     }

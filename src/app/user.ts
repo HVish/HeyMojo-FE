@@ -18,4 +18,5 @@ export class User {
     education: Organization[];
     hobbies: String[];
     name: Name;
+    profilePic: string
 }                         

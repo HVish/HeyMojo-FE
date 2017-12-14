@@ -2,7 +2,11 @@
     padding: 20px 0px;
 }
 .profile-img {
-	text-align: center;
+    text-align: center;
+    max-height: 200px;
+}
+.profile-img img {
+    height: 100%;
 }
 span.tags {
     display: inline-block;
