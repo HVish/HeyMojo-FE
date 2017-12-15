@@ -62,13 +62,17 @@
         <li class="list-group-item">
           <span class="align-middle tags">Education:</span>
           <span class="align-middle tags-data">
-            <div *ngFor="let org of fbData.education">{{org.school.name}} - {{org.year.name}} </div>
+            <div *ngFor="let org of fbData.education">
+              {{org.school ? org.school.name : ''}} - {{org.school ? org.year.name : ''}} 
+            </div>
           </span>
         </li>
         <li class="list-group-item">
           <span class="align-middle tags">Work:</span>
           <span class="align-middle tags-data">
-            <div *ngFor="let org of fbData.work">{{org.employer.name}} - {{org.position.name}} </div>
+            <div *ngFor="let org of fbData.work">
+              {{org.employer ? org.employer.name : ''}} - {{org.position ? org.position.name : ''}} 
+            </div>
           </span>
         </li>
       </ul>
