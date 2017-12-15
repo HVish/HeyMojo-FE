@@ -38,7 +38,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ApiService = (function () {
     function ApiService(http) {
         this.http = http;
-        this.baseUrl = 'http://localhost:3000';
+        this.baseUrl = 'https://heymojo.herokuapp.com';
     }
     ApiService.prototype.auth = function (username, password) {
         var body = { username: username, password: password };
