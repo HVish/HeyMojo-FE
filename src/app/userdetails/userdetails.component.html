@@ -1,0 +1,32 @@
+<div class="non-fb">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <span class="align-middle tags">Name: </span>
+      <span class="align-middle tags-data">{{user.name.first + ' ' + user.name.last}}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="align-middle tags">Username:</span>
+      <span class="align-middle tags-data">{{user.username}}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="align-middle tags">Data of Birth: </span>
+      <span class="align-middle tags-data">{{formatDate(user.dob)}}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="align-middle tags">Hobbies: </span>
+      <span class="align-middle tags-data">{{user.hobbies.join(', ')}}</span>
+    </li>
+    <li class="list-group-item">
+      <span class="align-middle tags">Education:</span>
+      <span class="align-middle tags-data">
+        <div *ngFor="let org of user.education">{{formatOrg(org)}} </div>
+      </span>
+    </li>
+    <li class="list-group-item">
+      <span class="align-middle tags">Work:</span>
+      <span class="align-middle tags-data">
+        <div *ngFor="let org of user.work">{{formatOrg(org)}} </div>
+      </span>
+    </li>
+  </ul>
+</div>

@@ -57,21 +57,6 @@ export class ProfileComponent implements OnInit {
         }
     }
 
-    formatDate(date: any): string {
-        const d: Date = new Date(date);
-        return d.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-    }
-
-    formatOrg(org: Organization): string {
-        const start = this.formatDate(org.start);
-        const end = org.end ? this.formatDate(org.end) : 'present';
-        return `${org.name} [ ${start} - ${end} ]`;
-    }
-
     getFbProfile(): Promise<any> {
         const method: ApiMethod = 'get';
         const access_token: string = this.sessionService.getItem('accessToken', '');

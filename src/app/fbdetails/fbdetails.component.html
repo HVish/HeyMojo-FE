@@ -1,0 +1,57 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#profile">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#albums">Albums</a>
+  </li>
+</ul>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade show active" id="profile">
+    <div class="non-fb">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <span class="align-middle tags">Name: </span>
+          <span class="align-middle tags-data">{{fbData.name}}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Gender:</span>
+          <span class="align-middle tags-data">{{fbData.gender}}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Data of Birth: </span>
+          <span class="align-middle tags-data">{{fbData.birthday}}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">About: </span>
+          <span class="align-middle tags-data">{{fbData.about}}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Likes:</span>
+          <span class="align-middle tags-data">
+            <div *ngFor="let org of fbData.likes.data">{{org.name}} </div>
+          </span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Education:</span>
+          <span class="align-middle tags-data">
+            <div *ngFor="let org of fbData.education">
+              {{org.school ? org.school.name : ''}} - {{org.year ? org.year.name : ''}}
+            </div>
+          </span>
+        </li>
+        <li class="list-group-item">
+          <span class="align-middle tags">Work:</span>
+          <span class="align-middle tags-data">
+            <div *ngFor="let org of fbData.work">
+              {{org.employer ? org.employer.name : ''}} - {{org.position ? org.position.name : ''}}
+            </div>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="albums">
+    <p>Albums will come here</p>
+  </div>
+</div>

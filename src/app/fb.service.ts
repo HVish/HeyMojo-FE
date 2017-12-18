@@ -26,9 +26,9 @@ export class FbService {
         'relationship_status',
         'education',
         'work',
-        'albums{cover_photo,name,count,description}',
         'likes',
-        'picture.type(large)'
+        'picture.type(large)',
+        'albums{photos{picture},name,picture}'
     ];
 
     constructor(private fb: FacebookService) {

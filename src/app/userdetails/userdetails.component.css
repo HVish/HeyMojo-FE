@@ -1,0 +1,8 @@
+span.tags {
+    display: inline-block;
+    width: 110px;
+}
+span.tags-data {
+    display: inline-block;
+    width: calc(100% - 120px);
+}
