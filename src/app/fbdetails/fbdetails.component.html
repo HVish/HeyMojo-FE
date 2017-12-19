@@ -52,6 +52,10 @@
     </div>
   </div>
   <div class="tab-pane fade" id="albums">
-    <p>Albums will come here</p>
+    <div class="row">
+      <div *ngFor="let album of albums" class="col-md-3">
+        <app-photocard [link]="true" [cardTitle]="album.name" [cardSubTitle]="album.description" [imageUrl]="album.picture.data.url"></app-photocard>
+      </div>
+    </div>
   </div>
 </div>

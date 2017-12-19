@@ -1,0 +1,33 @@
+img {
+    height: 200px; 
+    width: 100%; 
+    display: block;
+    background: #f9f9f9;
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+}
+
+.card.link {
+    cursor: pointer;    
+}
+
+.card.link:after {
+    content: '\A';
+    position: absolute;
+    width: 100%; height:100%;
+    top:0; left:0;
+    background:rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+}
+
+.card.link:hover:after {
+    opacity: 1;
+}
+
+.card-header, .card-title, .card-subtitle {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

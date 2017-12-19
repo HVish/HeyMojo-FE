@@ -17,6 +17,7 @@ import { FbService } from './fb.service';
 import { LoaderComponent } from './loader/loader.component';
 import { FbdetailsComponent } from './fbdetails/fbdetails.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { PhotocardComponent } from './photocard/photocard.component';
 
 const LocalStorage = { provide: 'LOCALSTORAGE', useFactory: getLocalStorage };
 
@@ -29,7 +30,8 @@ const LocalStorage = { provide: 'LOCALSTORAGE', useFactory: getLocalStorage };
     ProfileComponent,
     LoaderComponent,
     FbdetailsComponent,
-    UserdetailsComponent
+    UserdetailsComponent,
+    PhotocardComponent
   ],
   imports: [
     BrowserModule,

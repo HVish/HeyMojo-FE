@@ -6,3 +6,7 @@ span.tags-data {
     display: inline-block;
     width: calc(100% - 120px);
 }
+
+#myTabContent {
+    padding: 20px;
+}

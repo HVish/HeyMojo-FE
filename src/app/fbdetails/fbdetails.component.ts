@@ -7,10 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FbdetailsComponent implements OnInit {
     @Input() fbData: any;
+    albums:Array<any>;
 
     constructor() { }
 
     ngOnInit() {
+        this.albums = this.fbData.albums.data;
     }
 
 }

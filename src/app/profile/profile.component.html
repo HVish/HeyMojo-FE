@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-md-center">
     <div class="col-lg-3 profile-img">
-      <img class="img-fluid" src="{{profilePic}}" alt="Profile Image">
+      <img *ngIf="profilePic" class="img-fluid" src="{{profilePic}}" alt="Profile Image">
     </div>
     <app-userdetails *ngIf="user&&!fbLogin" [user]="user" class="col-lg-9"></app-userdetails>
     <app-fbdetails *ngIf="fbLogin&&fbData" [fbData]="fbData" class="col-lg-9"></app-fbdetails>
