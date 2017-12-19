@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
     password: string;
     confirmPassword: string;
     username: string;
+    email: string;
     profilePic: any;
 
     constructor(
@@ -31,7 +32,12 @@ export class SignupComponent implements OnInit {
     }
 
     submit(): void {
-        if (this.password != this.confirmPassword) {
+        const isNotEmpty = !!this.firstName && !!this.lastName && !!this.dob && !!this.password &&
+            !!this.confirmPassword && !!this.username && !!this.email && !!this.profilePic;
+
+        if (!isNotEmpty) {
+            alert('All fields are mondatory');
+        } else if (this.password != this.confirmPassword) {
             alert('password mismatch');
         } else {
             let filename;
@@ -41,6 +47,7 @@ export class SignupComponent implements OnInit {
                 dob: this.dob,
                 password: this.password,
                 username: this.username,
+                email: this.email,
                 profilePic: this.profilePic
             };
             this.dataService.sendData({ loading: true });

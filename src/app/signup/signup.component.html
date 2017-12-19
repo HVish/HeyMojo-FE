@@ -2,6 +2,7 @@
     <div class="row justify-content-md-center">
         <div class="col-sm-8">
             <form>
+                <p>*All fields are compulsory</p>
                 <div class="form-group">
                     <label for="firstName">First Name</label>
                     <input [(ngModel)]="firstName" type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
@@ -19,6 +20,11 @@
                     <input [(ngModel)]="username" type="text" class="form-control" id="username" name="username" aria-describedby="usernameHelp"
                         placeholder="Username">
                     <small id="usernameHelp" class="form-text text-muted">Username should be unique. It will be used at the time of login.</small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input [(ngModel)]="email" type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email">
+                    <small id="emailHelp" class="form-text text-muted">It will be used in case you forgot password.</small>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
