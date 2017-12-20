@@ -18,6 +18,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { FbdetailsComponent } from './fbdetails/fbdetails.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { PhotocardComponent } from './photocard/photocard.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 const LocalStorage = { provide: 'LOCALSTORAGE', useFactory: getLocalStorage };
 
@@ -31,7 +32,8 @@ const LocalStorage = { provide: 'LOCALSTORAGE', useFactory: getLocalStorage };
     LoaderComponent,
     FbdetailsComponent,
     UserdetailsComponent,
-    PhotocardComponent
+    PhotocardComponent,
+    ResetpasswordComponent
   ],
   imports: [
     BrowserModule,

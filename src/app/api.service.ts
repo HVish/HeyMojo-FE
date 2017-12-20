@@ -43,4 +43,16 @@ export class ApiService {
         return this.http.post<User>(`${this.baseUrl}/users`, data);
     }
 
+    genResetPasswordLink(username: string): Observable<any> {
+        return this.http.post(`${this.baseUrl}/users/${username}/reset`, null);
+    }
+
+    verifyResetPasswordToken(username: string, token: string): Observable<any> {
+        return this.http.get(`${this.baseUrl}/users/${username}/reset`, { params: { token } });
+    }
+
+    resetPassword(username: string, resetToken: string, password: string): Observable<any> {
+        return this.http.put(`${this.baseUrl}/users/${username}/reset`, { resetToken, password });
+    }
+
 }
